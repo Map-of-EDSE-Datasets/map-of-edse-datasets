@@ -10,7 +10,7 @@ An interactive web application that visualizes and organizes datasets used in En
 ## Repository Structure
 
 ```
-map-of-datasets/
+map-of-EDSE-datasets/
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── data_source_submission.yml  # New dataset submission template
@@ -76,9 +76,9 @@ Each dataset entry contains:
 
 ## How to Submit a New Dataset
 
-1. Go to the [GitHub repository](https://github.com/Map-of-Datasets/map-of-datasets).
+1. Go to the [GitHub repository](https://github.com/map-of-EDSE-datasets/map-of-EDSE-datasets).
 2. Click **Issues** → **New issue**.
-3. Select the **"Submit a New Dataset"** template (or use the direct link: [New Dataset Submission](https://github.com/Map-of-Datasets/map-of-datasets/issues/new?template=data_source_submission.yml)).
+3. Select the **"Submit a New Dataset"** template (or use the direct link: [New Dataset Submission](https://github.com/map-of-EDSE-datasets/map-of-EDSE-datasets/issues/new?template=data_source_submission.yml)).
 4. Fill in the template fields:
 
 | Field | Required | Description |
@@ -110,9 +110,9 @@ If you find incorrect, missing, or problematic data, please open a GitHub issue 
 
 ### Steps
 
-1. Go to the [GitHub repository](https://github.com/Map-of-Datasets/map-of-datasets).
+1. Go to the [GitHub repository](https://github.com/map-of-EDSE-datasets/map-of-EDSE-datasets).
 2. Click **Issues** → **New issue**.
-3. Select the **"Report a Data Issue"** template (or use the direct link: [New Data Correction Issue](https://github.com/Map-of-Datasets/map-of-datasets/issues/new?template=data_correction.yml)).
+3. Select the **"Report a Data Issue"** template (or use the direct link: [New Data Correction Issue](https://github.com/map-of-EDSE-datasets/map-of-EDSE-datasets/issues/new?template=data_correction.yml)).
 4. Fill in the template fields:
 
 | Field | Required | Description |
@@ -137,7 +137,7 @@ A GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) deploys the app
 2. Under **Source**, select **GitHub Actions**
 3. Push to `main` -- the workflow will build and deploy
 
-The app will be available at **https://map-of-datasets.github.io/map-of-datasets**.
+The app will be available at **https://map-of-EDSE-datasets.github.io/map-of-EDSE-datasets**.
 
 ---
 
@@ -164,5 +164,5 @@ If you use this tool or dataset catalog in your research, please cite:
 
 ## Resources
 
-- **GitHub Repository:** [Map-of-Datasets/map-of-datasets](https://github.com/Map-of-Datasets/map-of-datasets)
+- **GitHub Repository:** [map-of-EDSE-datasets/map-of-EDSE-datasets](https://github.com/map-of-EDSE-datasets/map-of-EDSE-datasets)
 - **Paper:** IDETC/CIE 2026 Conference Submission
