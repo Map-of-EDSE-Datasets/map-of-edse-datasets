@@ -1,0 +1,196 @@
+name: "Submit a New Dataset"
+description: "Suggest a dataset to be added to the EDSE Dataset Map"
+title: "[Dataset Submission]: "
+labels: ["dataset-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to the EDSE Dataset Map! Please fill in as many fields as possible.
+        Fields marked with an asterisk (*) are required.
+
+  - type: input
+    id: dataset_name
+    attributes:
+      label: "Dataset Name *"
+      description: "The official or commonly used name of the dataset"
+      placeholder: "e.g., NASA C-MAPSS"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description *"
+      description: "A brief description of the dataset, its contents, and purpose"
+      placeholder: "Describe what data is included, how it was collected, and what it is used for"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: domain
+    attributes:
+      label: "Engineering Domain *"
+      description: "The primary engineering domain this dataset belongs to"
+      options:
+        - Aerospace
+        - Automotive
+        - Biomedical
+        - Civil / Infrastructure
+        - Cross-Domain
+        - Energy Systems
+        - Manufacturing
+        - Materials Science
+        - Other (specify in Additional Notes)
+    validations:
+      required: true
+
+  - type: input
+    id: subdomain
+    attributes:
+      label: "Subdomain"
+      description: "A more specific area within the domain (optional)"
+      placeholder: "e.g., Propulsion, Rotating Machinery, Structural Health"
+
+  - type: dropdown
+    id: lifecycle
+    attributes:
+      label: "System Lifecycle Stage *"
+      description: "Which lifecycle stage does this dataset primarily cover?"
+      options:
+        - Requirements Definition
+        - Conceptual Design
+        - Detailed Design
+        - Manufacturing
+        - Verification & Validation
+        - Operations & Maintenance
+        - End-of-Life
+    validations:
+      required: true
+
+  - type: dropdown
+    id: data_type
+    attributes:
+      label: "Data Type *"
+      description: "The primary type/modality of the data"
+      options:
+        - Textual / Semantic
+        - Geometric / Structural
+        - Behavioral / Simulation
+        - Experimental / Test
+        - Operational / Field
+    validations:
+      required: true
+
+  - type: dropdown
+    id: data_format
+    attributes:
+      label: "Data Format *"
+      description: "The structural category of the data"
+      options:
+        - Structured
+        - Semi-Structured
+        - Unstructured
+        - Domain-Specific
+    validations:
+      required: true
+
+  - type: input
+    id: format_detail
+    attributes:
+      label: "Format Detail *"
+      description: "The specific file format(s)"
+      placeholder: "e.g., CSV, JSON, STEP, MAT, HDF5, PDF"
+    validations:
+      required: true
+
+  - type: input
+    id: primary_use
+    attributes:
+      label: "Primary Use *"
+      description: "The main research or engineering application"
+      placeholder: "e.g., Fault Diagnosis, RUL Prediction, Shape Optimization"
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: "Source / Institution *"
+      description: "The organization or institution that created or maintains the dataset"
+      placeholder: "e.g., NASA Prognostics Center of Excellence"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: "Dataset URL *"
+      description: "A direct link to access or download the dataset"
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: input
+    id: year
+    attributes:
+      label: "Year Published *"
+      description: "The year the dataset was first published or made available"
+      placeholder: "e.g., 2020"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: license
+    attributes:
+      label: "License"
+      description: "The license under which the dataset is distributed"
+      options:
+        - Public Domain
+        - Public Domain (U.S. Government)
+        - Public
+        - CC BY 4.0
+        - CC BY-SA 4.0
+        - CC BY-NC 4.0
+        - CC BY-NC-SA 4.0
+        - Creative Commons BY-NC-SA 3.0
+        - MIT
+        - Apache 2.0
+        - Competition
+        - Proprietary
+        - Unknown
+        - Other (specify in Additional Notes)
+
+  - type: input
+    id: citations
+    attributes:
+      label: "Estimated Citations"
+      description: "Approximate number of citations (optional)"
+      placeholder: "e.g., 1500"
+
+  - type: input
+    id: tools
+    attributes:
+      label: "Common Tools"
+      description: "Tools commonly used to work with this dataset (comma-separated)"
+      placeholder: "e.g., Python, MATLAB, SciPy"
+
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      description: "Keywords or tags for discoverability (comma-separated)"
+      placeholder: "e.g., prognostics, turbofan, time-series, degradation"
+
+  - type: input
+    id: publications
+    attributes:
+      label: "Key Publications"
+      description: "Key paper references associated with this dataset (comma-separated)"
+      placeholder: "e.g., Author2020, Author2022"
+
+  - type: textarea
+    id: additional_notes
+    attributes:
+      label: "Additional Notes"
+      description: "Any other relevant information about the dataset"

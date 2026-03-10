@@ -1,0 +1,176 @@
+name: Validate Dataset Submission
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to validate'
+        required: true
+        type: number
+
+permissions:
+  issues: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch issue and validate
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = context.payload.inputs.issue_number;
+
+            // Fetch the issue
+            const { data: issue } = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+            });
+
+            // Check that this is a dataset submission issue
+            const labels = issue.labels.map(l => l.name);
+            if (!labels.includes('dataset-submission')) {
+              core.setFailed(`Issue #${issueNumber} is not a dataset submission (missing 'dataset-submission' label).`);
+              return;
+            }
+
+            const body = issue.body || '';
+
+            // Define required fields and their header patterns in the issue body
+            // GitHub issue templates render as "### Field Label\n\nvalue"
+            const requiredFields = [
+              { label: 'Dataset Name', id: 'dataset_name' },
+              { label: 'Description', id: 'description' },
+              { label: 'Engineering Domain', id: 'domain' },
+              { label: 'System Lifecycle Stage', id: 'lifecycle' },
+              { label: 'Data Type', id: 'data_type' },
+              { label: 'Data Format', id: 'data_format' },
+              { label: 'Format Detail', id: 'format_detail' },
+              { label: 'Primary Use', id: 'primary_use' },
+              { label: 'Source / Institution', id: 'source' },
+              { label: 'Dataset URL', id: 'url' },
+              { label: 'Year Published', id: 'year' },
+            ];
+
+            const missingFields = [];
+            const emptyResponses = ['_No response_', 'None', '', 'N/A'];
+
+            for (const field of requiredFields) {
+              // Match "### Field Label\n\nvalue" pattern
+              const regex = new RegExp(
+                `###\\s+${field.label.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&')}[^#]*?\\n\\n([\\s\\S]*?)(?=\\n###|$)`,
+                'i'
+              );
+              const match = body.match(regex);
+
+              if (!match) {
+                missingFields.push(field.label);
+                continue;
+              }
+
+              const value = match[1].trim();
+              if (!value || emptyResponses.includes(value)) {
+                missingFields.push(field.label);
+              }
+            }
+
+            // Validate year is a number if present
+            const yearRegex = /###\s+Year Published[^#]*?\n\n([\s\S]*?)(?=\n###|$)/i;
+            const yearMatch = body.match(yearRegex);
+            if (yearMatch) {
+              const yearVal = yearMatch[1].trim();
+              if (yearVal && !emptyResponses.includes(yearVal)) {
+                const yearNum = parseInt(yearVal, 10);
+                if (isNaN(yearNum) || yearNum < 1900 || yearNum > 2100) {
+                  missingFields.push('Year Published (must be a valid year between 1900-2100)');
+                }
+              }
+            }
+
+            // Validate URL format if present
+            const urlRegex = /###\s+Dataset URL[^#]*?\n\n([\s\S]*?)(?=\n###|$)/i;
+            const urlMatch = body.match(urlRegex);
+            if (urlMatch) {
+              const urlVal = urlMatch[1].trim();
+              if (urlVal && !emptyResponses.includes(urlVal)) {
+                if (!urlVal.startsWith('http://') && !urlVal.startsWith('https://')) {
+                  missingFields.push('Dataset URL (must start with http:// or https://)');
+                }
+              }
+            }
+
+            if (missingFields.length > 0) {
+              // Post a comment listing missing fields
+              const commentBody = [
+                '## Validation Failed',
+                '',
+                'The following required fields are missing or invalid:',
+                '',
+                ...missingFields.map(f => `- **${f}**`),
+                '',
+                'Please update this issue with the missing information and ask a maintainer to re-run the validation.',
+                '',
+                '---',
+                '*This check was performed automatically by the dataset validation workflow.*',
+              ].join('\n');
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: commentBody,
+              });
+
+              // Add a label to indicate validation failure
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: ['validation-failed'],
+              });
+
+              core.setFailed(`Validation failed: ${missingFields.length} field(s) missing or invalid.`);
+            } else {
+              // Post success comment
+              const successBody = [
+                '## Validation Passed',
+                '',
+                'All required fields are present and valid. This dataset submission is ready for review.',
+                '',
+                '---',
+                '*This check was performed automatically by the dataset validation workflow.*',
+              ].join('\n');
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: successBody,
+              });
+
+              // Remove validation-failed label if it exists
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  name: 'validation-failed',
+                });
+              } catch (e) {
+                // Label might not exist, that's fine
+              }
+
+              // Add validated label
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                labels: ['validated'],
+              });
+
+              console.log('All required fields are present and valid.');
+            }

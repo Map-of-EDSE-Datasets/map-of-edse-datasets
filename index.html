@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDSE Dataset Map — Engineering Design & Systems Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="header-left">
+            <h1>EDSE Dataset Map</h1>
+            <p class="subtitle">A Navigable Map of Datasets for Engineering Design and Systems Engineering</p>
+        </div>
+        <div class="header-actions">
+            <a href="https://github.com/Map-of-Datasets/map-of-datasets/issues/new?template=data_source_submission.yml" target="_blank" rel="noopener noreferrer" class="btn-submit-dataset" title="Submit a new dataset">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>Submit Dataset</span>
+            </a>
+            <button id="btn-about" class="btn-about" title="About this project">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>About</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- About / Splash Modal -->
+<div id="about-modal" class="about-overlay">
+    <div class="about-modal">
+        <!-- Header -->
+        <div class="about-header">
+            <h2>About This Project</h2>
+            <button id="close-about" class="about-close">&times;</button>
+        </div>
+
+        <!-- Content -->
+        <div class="about-body">
+            <!-- Paper Info -->
+            <div class="about-section">
+                <h3 class="about-section-label">Paper</h3>
+                <p class="about-paper-title">A Framework and Prototype for a Navigable Map of Datasets in Engineering Design and Systems Engineering</p>
+                <p class="about-authors">H. Sinan Bank, Daniel R. Herber</p>
+                <p class="about-affiliation">Department of Systems Engineering, Colorado State University</p>
+                <p class="about-abstract-id">IDETC/CIE 2026</p>
+            </div>
+
+            <!-- Resources -->
+            <div class="about-section">
+                <h3 class="about-section-label">Resources</h3>
+                <div class="about-resources">
+                    <a href="https://github.com/Map-of-Datasets/map-of-datasets" target="_blank" rel="noopener noreferrer" class="about-resource-link">
+                        <div class="about-resource-icon about-icon-github">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        </div>
+                        <div class="about-resource-text">
+                            <div class="about-resource-name">GitHub Repository</div>
+                            <div class="about-resource-desc">Source code and documentation</div>
+                        </div>
+                        <svg class="about-external" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Report Issue -->
+            <div class="about-issue-box">
+                <div class="about-issue-content">
+                    <svg class="about-issue-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <div>
+                        <h4 class="about-issue-title">Found an issue with the data?</h4>
+                        <p class="about-issue-desc">If you notice any incorrect information, missing data, or other issues, please help us improve by opening a GitHub issue.</p>
+                        <a href="https://github.com/Map-of-Datasets/map-of-datasets/issues/new?template=data_correction.yml" target="_blank" rel="noopener noreferrer" class="about-issue-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            Report an Issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="about-footer">
+            <p>This interactive visualization accompanies the IDETC 2026 conference submission.</p>
+        </div>
+    </div>
+</div>
+
+<main>
+    <!-- Filters Panel -->
+    <aside id="filters-panel">
+        <h2>Filters</h2>
+        <button id="clear-filters" class="btn-clear">Clear All</button>
+
+        <div class="filter-group">
+            <h3><span class="dim-icon dim-domain">&#9679;</span> Engineering Domain</h3>
+            <div id="filter-domain" class="filter-options"></div>
+        </div>
+
+        <div class="filter-group">
+            <h3><span class="dim-icon dim-lifecycle">&#9679;</span> Lifecycle Stage</h3>
+            <div id="filter-lifecycle" class="filter-options"></div>
+        </div>
+
+        <div class="filter-group">
+            <h3><span class="dim-icon dim-datatype">&#9679;</span> Data Type</h3>
+            <div id="filter-dataType" class="filter-options"></div>
+        </div>
+
+        <div class="filter-group">
+            <h3><span class="dim-icon dim-format">&#9679;</span> Data Format</h3>
+            <div id="filter-format" class="filter-options"></div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <section id="content">
+        <!-- View Toggle -->
+        <div class="view-controls">
+            <button id="btn-dashboard" class="view-btn active">Dashboard</button>
+            <button id="btn-graph" class="view-btn">Graph View</button>
+            <button id="btn-table" class="view-btn">Table View</button>
+            <span id="result-count" class="result-count"></span>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view-panel active">
+            <div id="dashboard-content"></div>
+        </div>
+
+        <!-- Graph View -->
+        <div id="graph-view" class="view-panel">
+            <div id="graph-layers" class="graph-layers">
+                <span class="graph-layers-label">Show:</span>
+                <label class="layer-toggle" data-layer="domain">
+                    <input type="checkbox" checked> <span class="layer-dot" style="background: var(--color-domain);"></span> Domain
+                </label>
+                <label class="layer-toggle" data-layer="lifecycle">
+                    <input type="checkbox" checked> <span class="layer-dot" style="background: var(--color-lifecycle);"></span> Lifecycle
+                </label>
+                <label class="layer-toggle" data-layer="dataType">
+                    <input type="checkbox" checked> <span class="layer-dot" style="background: var(--color-datatype);"></span> Data Type
+                </label>
+                <label class="layer-toggle" data-layer="format">
+                    <input type="checkbox" checked> <span class="layer-dot" style="background: var(--color-format);"></span> Format
+                </label>
+                <label class="layer-toggle" data-layer="tools">
+                    <input type="checkbox" checked> <span class="layer-dot" style="background: #d97706;"></span> Tools
+                </label>
+            </div>
+            <div id="graph-container"></div>
+        </div>
+
+        <!-- Table View -->
+        <div id="table-view" class="view-panel">
+            <table id="dataset-table">
+                <thead>
+                    <tr>
+                        <th>Dataset</th>
+                        <th>Domain</th>
+                        <th>Lifecycle</th>
+                        <th>Data Type</th>
+                        <th>Format</th>
+                        <th>Primary Use</th>
+                    </tr>
+                </thead>
+                <tbody id="dataset-tbody"></tbody>
+            </table>
+        </div>
+
+        <!-- Dataset Detail Panel -->
+        <div id="detail-panel" class="detail-panel hidden">
+            <button id="close-detail" class="btn-close">&times;</button>
+            <div id="detail-content"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>EDSE Dataset Map &mdash; A research prototype for IDETC 2026.
+       <a href="https://github.com/Map-of-Datasets/map-of-datasets" target="_blank">Source</a></p>
+</footer>
+
+<!-- ClustrMaps Globe (visitor counter) -->
+<div id="clustrmaps-globe"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

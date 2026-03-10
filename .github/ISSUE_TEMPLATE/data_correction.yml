@@ -1,0 +1,57 @@
+name: "Report a Data Issue"
+description: "Report incorrect information, missing data, or other issues with existing datasets"
+title: "[Data Correction]: "
+labels: ["data-correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve the EDSE Dataset Map!
+        Please describe the issue you found with the existing data.
+
+  - type: input
+    id: dataset_name
+    attributes:
+      label: "Dataset Name *"
+      description: "Which dataset has the issue?"
+      placeholder: "e.g., NASA C-MAPSS"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: "Type of Issue *"
+      description: "What kind of issue did you find?"
+      options:
+        - Incorrect information
+        - Missing data
+        - Broken link
+        - Outdated information
+        - Duplicate entry
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description *"
+      description: "Describe the issue in detail"
+      placeholder: "What is wrong and what should it be?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested_fix
+    attributes:
+      label: "Suggested Correction"
+      description: "If you know the correct information, please provide it"
+      placeholder: "The correct value should be..."
+
+  - type: input
+    id: source
+    attributes:
+      label: "Source / Reference"
+      description: "A link or reference supporting the correction"
+      placeholder: "https://..."

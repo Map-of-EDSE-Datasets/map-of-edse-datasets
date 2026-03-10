@@ -1,0 +1,216 @@
+[
+  {
+    "id": "cmapss",
+    "name": "NASA C-MAPSS",
+    "description": "Commercial Modular Aero-Propulsion System Simulation dataset for turbofan engine degradation. Contains run-to-failure simulated data with multiple operating conditions and fault modes.",
+    "domain": "Aerospace",
+    "subdomain": "Propulsion",
+    "lifecycle": "Operations & Maintenance",
+    "dataType": "Behavioral / Simulation",
+    "format": "Structured",
+    "formatDetail": "CSV",
+    "primaryUse": "RUL Prediction",
+    "source": "NASA Prognostics Center of Excellence",
+    "url": "https://data.nasa.gov/dataset/cmapss-jet-engine-simulated-data",
+    "license": "Public Domain",
+    "year": 2008,
+    "publications": [
+      {"authors": "Saxena & Goebel", "title": "Turbofan Engine Degradation Simulation Data Set", "year": 2008, "venue": "NASA Ames Prognostics Data Repository"},
+      {"authors": "Ramasso & Saxena", "title": "Performance Benchmarking and Analysis of Prognostic Methods for CMAPSS Datasets", "year": 2014, "venue": "Int. J. Prognostics and Health Management"},
+      {"authors": "Zhou et al.", "title": "Data-Driven Modeling of Aero-Engine Performance Degradation Models", "year": 2024, "venue": "IEEE Access"},
+      {"authors": "Fu & Avdelidis", "title": "Prognostic and Health Management of Critical Aircraft Systems and Components", "year": 2023, "venue": "Sensors"}
+    ],
+    "tools": ["Python", "MATLAB", "PyPHM"],
+    "tags": ["prognostics", "turbofan", "remaining-useful-life", "time-series", "degradation"]
+  },
+  {
+    "id": "cwru",
+    "name": "CWRU Bearing",
+    "description": "Case Western Reserve University bearing vibration dataset. Accelerometer data collected from bearings with seeded faults at various loads.",
+    "domain": "Manufacturing",
+    "subdomain": "Rotating Machinery",
+    "lifecycle": "Operations & Maintenance",
+    "dataType": "Experimental / Test",
+    "format": "Structured",
+    "formatDetail": "MAT",
+    "primaryUse": "Fault Diagnosis",
+    "source": "Case Western Reserve University",
+    "url": "https://engineering.case.edu/bearingdatacenter",
+    "license": "Public",
+    "year": 2000,
+    "publications": [
+      {"authors": "Case Western Reserve University", "title": "Bearing Data Center", "year": 2000, "venue": "CWRU Bearing Data Center"}
+    ],
+    "tools": ["MATLAB", "Python", "SciPy"],
+    "tags": ["bearing", "vibration", "fault-diagnosis", "condition-monitoring", "accelerometer"]
+  },
+  {
+    "id": "bosch",
+    "name": "Bosch Production Line",
+    "description": "Production line performance data from Bosch. Anonymized measurements from manufacturing processes for predicting internal failures.",
+    "domain": "Manufacturing",
+    "subdomain": "Production",
+    "lifecycle": "Manufacturing",
+    "dataType": "Experimental / Test",
+    "format": "Structured",
+    "formatDetail": "CSV",
+    "primaryUse": "Quality Prediction",
+    "source": "Bosch / Kaggle",
+    "url": "https://www.kaggle.com/c/bosch-production-line-performance",
+    "license": "Competition",
+    "year": 2016,
+    "publications": [
+      {"authors": "Bosch", "title": "Bosch Production Line Performance", "year": 2016, "venue": "Kaggle Competition"}
+    ],
+    "tools": ["Python", "XGBoost", "scikit-learn"],
+    "tags": ["production", "quality-control", "manufacturing", "binary-classification", "anonymized"]
+  },
+  {
+    "id": "kitti",
+    "name": "KITTI Vision",
+    "description": "Benchmark suite for autonomous driving with stereo, optical flow, visual odometry, 3D object detection and tracking from a driving platform.",
+    "domain": "Automotive",
+    "subdomain": "Autonomous Systems",
+    "lifecycle": "Operations & Maintenance",
+    "dataType": "Operational / Field",
+    "format": "Unstructured",
+    "formatDetail": "Images",
+    "primaryUse": "Perception",
+    "source": "Karlsruhe Institute of Technology / Toyota Technological Institute",
+    "url": "https://www.cvlibs.net/datasets/kitti/",
+    "license": "Creative Commons BY-NC-SA 3.0",
+    "year": 2012,
+    "publications": [
+      {"authors": "Geiger, Lenz & Urtasun", "title": "Are We Ready for Autonomous Driving? The KITTI Vision Benchmark Suite", "year": 2012, "venue": "IEEE CVPR"}
+    ],
+    "tools": ["Python", "TensorFlow", "PyTorch", "OpenCV"],
+    "tags": ["autonomous-driving", "computer-vision", "lidar", "stereo", "object-detection", "3D"]
+  },
+  {
+    "id": "pure",
+    "name": "PURE Requirements",
+    "description": "Public Requirements dataset containing 79 requirements documents from various public sources, annotated for natural language processing research.",
+    "domain": "Cross-Domain",
+    "subdomain": "Requirements Engineering",
+    "lifecycle": "Requirements Definition",
+    "dataType": "Textual / Semantic",
+    "format": "Semi-Structured",
+    "formatDetail": "XML",
+    "primaryUse": "NLP for RE",
+    "source": "University of Luxembourg",
+    "url": "https://zenodo.org/record/1414117",
+    "license": "CC BY 4.0",
+    "year": 2017,
+    "publications": [
+      {"authors": "Ferrari, Spagnolo & Gnesi", "title": "PURE: A Dataset of Public Requirements Documents", "year": 2017, "venue": "IEEE Int. Requirements Engineering Conf."}
+    ],
+    "tools": ["Python", "NLTK", "spaCy"],
+    "tags": ["requirements", "NLP", "text-mining", "specifications", "software-engineering"]
+  },
+  {
+    "id": "abc",
+    "name": "ABC CAD Dataset",
+    "description": "A Big CAD Model Dataset with 1 million CAD models annotated with ground truth decomposition, sharp features, and surface types for geometric deep learning.",
+    "domain": "Cross-Domain",
+    "subdomain": "CAD / Geometry",
+    "lifecycle": "Detailed Design",
+    "dataType": "Geometric / Structural",
+    "format": "Domain-Specific",
+    "formatDetail": "STEP",
+    "primaryUse": "Shape Analysis",
+    "source": "Koch et al.",
+    "url": "https://deep-geometry.github.io/abc-dataset/",
+    "license": "MIT",
+    "year": 2019,
+    "publications": [
+      {"authors": "Koch et al.", "title": "ABC: A Big CAD Model Dataset For Geometric Deep Learning", "year": 2019, "venue": "IEEE CVPR"}
+    ],
+    "tools": ["Python", "Open3D", "PyTorch Geometric"],
+    "tags": ["CAD", "3D", "geometric-deep-learning", "shape", "B-rep", "mesh"]
+  },
+  {
+    "id": "materials-project",
+    "name": "Materials Project",
+    "description": "Open-access database of computed material properties including crystal structures, band structures, and elastic properties for over 150,000 materials.",
+    "domain": "Materials Science",
+    "subdomain": "Computational Materials",
+    "lifecycle": "Conceptual Design",
+    "dataType": "Behavioral / Simulation",
+    "format": "Structured",
+    "formatDetail": "JSON",
+    "primaryUse": "Property Prediction",
+    "source": "Lawrence Berkeley National Laboratory",
+    "url": "https://materialsproject.org/",
+    "license": "CC BY 4.0",
+    "year": 2013,
+    "publications": [
+      {"authors": "Jain et al.", "title": "Commentary: The Materials Project: A Materials Genome Approach to Accelerating Materials Innovation", "year": 2013, "venue": "APL Materials"}
+    ],
+    "tools": ["Python", "pymatgen", "MPRester API"],
+    "tags": ["materials", "DFT", "crystal-structure", "electronic", "thermodynamic", "property-prediction"]
+  },
+  {
+    "id": "nbi",
+    "name": "National Bridge Inventory",
+    "description": "Comprehensive database of structural and condition data for all U.S. highway bridges, maintained by FHWA with annual updates.",
+    "domain": "Civil / Infrastructure",
+    "subdomain": "Structural Engineering",
+    "lifecycle": "Operations & Maintenance",
+    "dataType": "Operational / Field",
+    "format": "Structured",
+    "formatDetail": "CSV",
+    "primaryUse": "Condition Assessment",
+    "source": "Federal Highway Administration (FHWA)",
+    "url": "https://www.fhwa.dot.gov/bridge/nbi.cfm",
+    "license": "Public Domain (U.S. Government)",
+    "year": 1992,
+    "publications": [
+      {"authors": "Federal Highway Administration", "title": "National Bridge Inventory", "year": 2023, "venue": "FHWA"}
+    ],
+    "tools": ["Python", "R", "Excel"],
+    "tags": ["bridges", "infrastructure", "inspection", "condition-rating", "structural-health"]
+  },
+  {
+    "id": "pronostia",
+    "name": "PRONOSTIA Bearings",
+    "description": "FEMTO-ST Institute bearing degradation dataset from accelerated life tests on bearings under various operating conditions for prognostics research.",
+    "domain": "Manufacturing",
+    "subdomain": "Rotating Machinery",
+    "lifecycle": "Operations & Maintenance",
+    "dataType": "Experimental / Test",
+    "format": "Structured",
+    "formatDetail": "CSV",
+    "primaryUse": "RUL Prediction",
+    "source": "FEMTO-ST Institute / IEEE PHM Challenge 2012",
+    "url": "https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/",
+    "notes": "Scroll down to item #10 (FEMTO Bearing) on the NASA PCoE page to find the dataset.",
+    "license": "Public",
+    "year": 2012,
+    "publications": [
+      {"authors": "Nectoux, P., Gouriveau, R., Medjaher, K., Ramasso, E., Morello, B., Zerhouni, N., Varnier, C.", "title": "PRONOSTIA: An Experimental Platform for Bearings Accelerated Life Test", "year": 2012, "venue": "IEEE International Conference on Prognostics and Health Management, Denver, CO, USA"}
+    ],
+    "tools": ["Python", "MATLAB"],
+    "tags": ["bearing", "prognostics", "remaining-useful-life", "accelerated-test", "vibration"]
+  },
+  {
+    "id": "hydraulic",
+    "name": "Hydraulic Systems",
+    "description": "Condition monitoring dataset of a hydraulic test rig with sensors measuring pressure, volume flow, temperature, vibration, and motor power.",
+    "domain": "Manufacturing",
+    "subdomain": "Hydraulics",
+    "lifecycle": "Operations & Maintenance",
+    "dataType": "Experimental / Test",
+    "format": "Structured",
+    "formatDetail": "CSV",
+    "primaryUse": "Condition Monitoring",
+    "source": "ZeMA gGmbH / UCI Machine Learning Repository",
+    "url": "https://archive.ics.uci.edu/ml/datasets/Condition+monitoring+of+hydraulic+systems",
+    "license": "CC BY 4.0",
+    "year": 2016,
+    "publications": [
+      {"authors": "Helwig, Pignanelli & Schutze", "title": "Condition Monitoring of a Complex Hydraulic System Using Multivariate Statistics", "year": 2015, "venue": "IEEE I2MTC"}
+    ],
+    "tools": ["Python", "scikit-learn"],
+    "tags": ["hydraulic", "condition-monitoring", "multi-sensor", "classification", "pressure", "temperature"]
+  }
+]
