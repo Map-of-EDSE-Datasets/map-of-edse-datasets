@@ -141,6 +141,27 @@ The app will be available at **https://map-of-datasets.github.io/map-of-datasets
 
 ---
 
+## Citation
+
+If you use this tool or dataset catalog in your research, please cite:
+
+```bibtex
+@inproceedings{Bank2026MapOfDatasets,
+  author    = {H. Sinan Bank and Daniel R. Herber},
+  title     = {A Framework and Prototype for a Navigable Map of Datasets
+               in Engineering Design and Systems Engineering},
+  booktitle = {Proceedings of the ASME 2026 International Design Engineering
+               Technical Conferences and Computers and Information in
+               Engineering Conference (IDETC/CIE 2026)},
+  year      = {2026},
+  month     = {August},
+  address   = {Houston, TX, USA},
+  note      = {DETC2026-XXXXX}
+}
+```
+
+---
+
 ## Resources
 
 - **GitHub Repository:** [Map-of-Datasets/map-of-datasets](https://github.com/Map-of-Datasets/map-of-datasets)
